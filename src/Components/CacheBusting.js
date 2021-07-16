@@ -24,9 +24,9 @@ const CacheBusting = ({ isEnable = true }) => {
 
       const shouldForceReload = checkVersion(metaVersion, currentVersion);
 
-      if (shouldForceReload) {
-        console.log(shouldForceReload);
+      console.log(shouldForceReload);
 
+      if (shouldForceReload) {
         alert("");
         console.log(
           `We are having the new version ${metaVersion} Should need to force reload`

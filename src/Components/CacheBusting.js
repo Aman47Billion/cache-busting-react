@@ -60,7 +60,7 @@ const CacheBusting = ({ isEnable = true }) => {
 
         console.log("not-equal");
 
-        //window.location.reload();
+        window.location.reload();
       }
     } catch (error) {
       console.error(error.message);

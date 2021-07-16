@@ -22,12 +22,6 @@ const CacheBusting = ({ isEnable = true }) => {
 
       const { version: metaVersion } = await response.json();
 
-      console.log(metaVersion);
-
-      console.log(currentVersion);
-
-      alert("");
-
       const shouldForceReload = checkVersion(metaVersion, currentVersion);
 
       if (shouldForceReload) {
@@ -61,6 +55,8 @@ const CacheBusting = ({ isEnable = true }) => {
         await Promise.all(cacheNames.map((name) => caches.delete(name)));
 
         console.log("The cache has been cleared");
+
+        //alert("");
 
         window.location.reload();
       }

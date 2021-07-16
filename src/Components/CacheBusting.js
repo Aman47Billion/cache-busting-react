@@ -56,9 +56,9 @@ const CacheBusting = ({ isEnable = true }) => {
 
         console.log("The cache has been cleared");
 
-        //alert("");
+        alert("not equal");
 
-        window.location.reload();
+        //window.location.reload();
       }
     } catch (error) {
       console.error(error.message);

@@ -26,6 +26,8 @@ const CacheBusting = ({ isEnable = true }) => {
 
       if (shouldForceReload) {
         console.log(shouldForceReload);
+
+        alert("");
         console.log(
           `We are having the new version ${metaVersion} Should need to force reload`
         );
@@ -73,9 +75,22 @@ const CacheBusting = ({ isEnable = true }) => {
   }
 
   const checkVersion = (metaVersion, currentVersion) => {
-    // if (!currentVersion) {
-    //   return false;
-    // }
+    if (!currentVersion) {
+      return false;
+    }
+    const metaVersions = metaVersion.split(/\./g);
+    const currentVersions = currentVersion.split(/\./g);
+
+    while (metaVersions.length || currentVersions.length) {
+      const a = Number(metaVersions.shift());
+
+      const b = Number(currentVersions.shift());
+      if (a === b) {
+        continue;
+      }
+      return a > b || isNaN(b);
+    }
+    return false;
 
     // const metaVersions = metaVersion.split(/\./g);
 
@@ -83,22 +98,11 @@ const CacheBusting = ({ isEnable = true }) => {
 
     //console.log(metaVersions, currentVersions);
 
-    if (metaVersion === currentVersion) {
-      return false;
-    } else {
-      return true;
-    }
-
-    // while (metaVersions.length || currentVersions.length) {
-    //   const a = Number(metaVersions.shift());
-
-    //   const b = Number(currentVersions.shift());
-    //   if (a === b) {
-    //     continue;
-    //   }
-    //   return a > b || isNaN(b);
+    // if (metaVersion === currentVersion) {
+    //   return false;
+    // } else {
+    //   return true;
     // }
-    // return false;
   };
 
   return (

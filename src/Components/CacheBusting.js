@@ -10,20 +10,28 @@ const CacheBusting = ({ isEnable = true }) => {
   let version = packageJson.version;
 
   useEffect(() => {
-    isEnable ? checkCatchStatus() : console.log("React cache is disabled");
+    checkCatchStatus();
   }, []);
 
   const checkCatchStatus = async () => {
     try {
+      console.log("executed");
       const currentVersion = packageJson.version;
 
       const response = await fetch("/meta.json");
 
       const { version: metaVersion } = await response.json();
 
+      console.log(metaVersion);
+
+      console.log(currentVersion);
+
+      alert("");
+
       const shouldForceReload = checkVersion(metaVersion, currentVersion);
 
       if (shouldForceReload) {
+        console.log(shouldForceReload);
         console.log(
           `We are having the new version ${metaVersion} Should need to force reload`
         );
@@ -67,23 +75,32 @@ const CacheBusting = ({ isEnable = true }) => {
   }
 
   const checkVersion = (metaVersion, currentVersion) => {
-    if (!currentVersion) {
+    // if (!currentVersion) {
+    //   return false;
+    // }
+
+    // const metaVersions = metaVersion.split(/\./g);
+
+    // const currentVersions = currentVersion.split(/\./g);
+
+    //console.log(metaVersions, currentVersions);
+
+    if (metaVersion === currentVersion) {
       return false;
+    } else {
+      return true;
     }
-    const metaVersions = metaVersion.split(/\./g);
 
-    const currentVersions = currentVersion.split(/\./g);
+    // while (metaVersions.length || currentVersions.length) {
+    //   const a = Number(metaVersions.shift());
 
-    while (metaVersions.length || currentVersions.length) {
-      const a = Number(metaVersions.shift());
-
-      const b = Number(currentVersions.shift());
-      if (a === b) {
-        continue;
-      }
-      return a > b || isNaN(b);
-    }
-    return false;
+    //   const b = Number(currentVersions.shift());
+    //   if (a === b) {
+    //     continue;
+    //   }
+    //   return a > b || isNaN(b);
+    // }
+    // return false;
   };
 
   return (

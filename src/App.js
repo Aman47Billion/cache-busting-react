@@ -1,11 +1,11 @@
-import './App.css';
-import CacheBusting from './Components/CacheBusting';
+import "./App.css";
+import CacheBusting from "./Components/CacheBusting";
 
 function App() {
   return (
     <div className="App">
-      <h4>Home</h4>
-      <CacheBusting/>
+      <h4>Welcome To React Cache Busting</h4>
+      <CacheBusting />
     </div>
   );
 }

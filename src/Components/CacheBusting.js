@@ -9,6 +9,8 @@ const CacheBusting = ({ isEnable = true }) => {
 
   let version = packageJson.version;
 
+  const [metaVersion, setMetaVersion] = useState("");
+
   useEffect(() => {
     checkCatchStatus();
   }, []);
@@ -85,24 +87,14 @@ const CacheBusting = ({ isEnable = true }) => {
       const a = Number(metaVersions.shift());
 
       const b = Number(currentVersions.shift());
+      console.log("a ", a);
+      console.log("b ", b);
       if (a === b) {
         continue;
       }
       return a > b || isNaN(b);
     }
     return false;
-
-    // const metaVersions = metaVersion.split(/\./g);
-
-    // const currentVersions = currentVersion.split(/\./g);
-
-    //console.log(metaVersions, currentVersions);
-
-    // if (metaVersion === currentVersion) {
-    //   return false;
-    // } else {
-    //   return true;
-    // }
   };
 
   return (

@@ -1,8 +1,9 @@
 import "./App.css";
 import CacheBusting from "./Components/CacheBusting";
 import packageJson from "../package.json";
+import { useEffect, useState } from "react";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <h4>Welcome To React Cache Busting....</h4>
@@ -10,6 +11,6 @@ function App() {
       <CacheBusting />
     </div>
   );
-}
+};
 
 export default App;
